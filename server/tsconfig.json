@@ -1,16 +1,28 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "_version": "22.0.0",
+
   "compilerOptions": {
     "lib": ["es2024", "ESNext.Array", "ESNext.Collection", "ESNext.Iterator"],
-    "noEmit": true,
-    "allowImportingTsExtensions": true,
     "module": "nodenext",
     "target": "es2022",
+
+    // "allowImportingTsExtensions": true,
+    // "noEmit": false,
+
     "strict": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "moduleResolution": "node16",
-    "strictNullChecks": true
-  }
+
+    "outDir": "dist",
+
+    "baseUrl": "./src", // Define a base para resolução de caminhos absolutos
+    "paths": {
+      "@/*": ["*"] // Mapeia "@/" para qualquer coisa dentro de "src/"
+    }
+  },
+
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules", "dist"]
 }

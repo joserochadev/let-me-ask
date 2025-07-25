@@ -1,12 +1,12 @@
-import { desc, eq } from 'drizzle-orm'
-import type { FastifyPluginCallbackZod } from 'fastify-type-provider-zod'
-import z from 'zod/v4'
-import { db } from '../../db/connection.ts'
-import { schema } from '../../db/schemas/index.ts'
+import { db } from "@/db/connection.js";
+import { schema } from "@/db/schemas/index.js";
+import { desc, eq } from "drizzle-orm";
+import type { FastifyPluginCallbackZod } from "fastify-type-provider-zod";
+import z from "zod/v4";
 
 export const getRoomQuestionsRoute: FastifyPluginCallbackZod = (app) => {
   app.get(
-    '/rooms/:roomId/questions',
+    "/rooms/:roomId/questions",
     {
       schema: {
         params: z.object({
@@ -15,7 +15,7 @@ export const getRoomQuestionsRoute: FastifyPluginCallbackZod = (app) => {
       },
     },
     async (request) => {
-      const { roomId } = request.params
+      const { roomId } = request.params;
 
       const result = await db
         .select({
@@ -26,9 +26,9 @@ export const getRoomQuestionsRoute: FastifyPluginCallbackZod = (app) => {
         })
         .from(schema.questions)
         .where(eq(schema.questions.roomId, roomId))
-        .orderBy(desc(schema.questions.createdAt))
+        .orderBy(desc(schema.questions.createdAt));
 
-      return result
+      return result;
     }
-  )
-}
+  );
+};

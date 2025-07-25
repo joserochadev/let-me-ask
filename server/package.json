@@ -9,7 +9,9 @@
     "db:generate": "drizzle-kit generate",
     "db:migrate": "drizzle-kit migrate",
     "db:seed": "tsx --env-file .env ./src/db/seed.ts",
-    "db:studio": "drizzle-kit studio"
+    "db:studio": "drizzle-kit studio",
+    "build": "rm -rf dist && tsc && tsc-alias",
+    "start": "node --env-file .env dist/server.js"
   },
   "keywords": [],
   "author": "joserochadev <joserochadev@gmail.com>",
@@ -20,6 +22,8 @@
     "@types/node": "^24.0.12",
     "drizzle-kit": "^0.31.4",
     "drizzle-seed": "^0.3.1",
+    "ts-node": "^10.9.2",
+    "tsc-alias": "^1.8.16",
     "tsx": "^4.20.3",
     "typescript": "^5.8.3",
     "ultracite": "5.0.32"

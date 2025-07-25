@@ -1,10 +1,10 @@
-import { drizzle } from 'drizzle-orm/postgres-js'
-import postgres from 'postgres'
-import { env } from '../env/index.ts'
-import { schema } from './schemas/index.ts'
+import { drizzle } from "drizzle-orm/postgres-js";
+import postgres from "postgres";
+import { schema } from "./schemas/index.js";
+import { env } from "@/env/index.js";
 
-export const sql = postgres(env.DATABASE_URL)
+export const sql = postgres(env.DATABASE_URL);
 export const db = drizzle(sql, {
   schema,
-  casing: 'snake_case',
-})
+  casing: "snake_case",
+});
